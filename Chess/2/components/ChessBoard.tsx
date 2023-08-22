@@ -1,4 +1,9 @@
-export default function ChessBoard({ oneBlock, boardWidth, boardHeight }) {
+import ChessPieces from "./chessPieces";
+
+export default function ChessBoard() {
+  const oneBlock = 80;
+  const boardWidth = 8;
+  const boardHeight = 8;
   return (
     <div
       style={{
@@ -9,7 +14,12 @@ export default function ChessBoard({ oneBlock, boardWidth, boardHeight }) {
         width: oneBlock * boardWidth,
         height: oneBlock * boardHeight,
         backgroundColor: "brown",
+        alignItems: "center",
+        justifyContent:"center"
+      
       }}
-    ></div>
+    >
+      <ChessPieces />
+    </div>
   );
 }
