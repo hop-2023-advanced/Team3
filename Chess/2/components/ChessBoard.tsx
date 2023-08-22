@@ -16,7 +16,7 @@ export default function ChessBoard() {
         backgroundColor: "brown",
       }}
     >
-      <ChessPieces oneBlock={oneBlock} boardWidth={boardWidth} boardHeight={boardHeight}/>
+      <ChessPieces oneBlock={oneBlock}/>
     </div>
   );
 }
