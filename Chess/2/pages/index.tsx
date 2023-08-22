@@ -1,9 +1,10 @@
-import ChessPieces from "@/components/chessPieces";
+import ChessBoard from "@/components/ChessBoard";
 
 export default function Home() {
+  
   return (
     <main className="flex justify-center">
-      <ChessPieces />
+      <ChessBoard/>
     </main>
   );
 }
