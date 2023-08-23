@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Pieces from "./pieces"
 // import Horse from "./PieceFuntions/horse"
 
@@ -206,16 +206,45 @@ export default function ChessPieces ({ oneBlock}) {
             URl : "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png"
         },
     ])
-    const [horse , setHorse] = useState(pieces[21])
+
+    const knightIndex = 21;
+    const knightPosition = pieces[knightIndex].position;
+    const [isNight , setIsNight] = useState(false)
+    const possibleMoves = [
+        { top: -2, left: 1 },
+        { top: -2, left: -1 },
+        { top: 2, left: 1 },
+        { top: 2, left: -1 },
+        { top: 1, left: 2 },
+        { top: 1, left: -2 },
+        { top: -1, left: 2 },
+        { top: -1, left: -2 },
+      ];
     
-    function Horse() {
+      const highlightStyle = {
+        // boxShadow: "0 0 10px 30px grey",
+
+      };
+    
+      function isPositionValid(position) {
+        return (
+          position.top >= 1 &&
+          position.left >= 1 &&
+          position.top <= 8 &&
+          position.left <= 8
+        );
+      }
+    
+      function Horse() {
         const newPieces = pieces.map((piece, index) => {
-          if (index === 21 && piece.id.charAt(1) === "n") {
+          if (piece.id.charAt(1) === "n") {
             const newPosition = {
-              top: piece.position.top + 3,
+              top: piece.position.top - 2,
               left: piece.position.left + 1,
             };
-            return { ...piece, position: newPosition };
+            if (isPositionValid(newPosition)) {
+              return { ...piece, position: newPosition };
+            }
           }
           return piece;
         });
@@ -223,21 +252,55 @@ export default function ChessPieces ({ oneBlock}) {
         setPieces(newPieces);
       }
     
-        return (
+      return (
         <div>
-            {/* {knights?.map((knight , index ) => {
+          <img
+            src={pieces[21]?.URl}
+            style={{
+              width: oneBlock,
+              height: oneBlock,
+              position: "absolute",
+              marginTop: (pieces[21].position.top - 1) * oneBlock,
+              marginLeft: (pieces[21].position.left - 1) * oneBlock,
+            }}
+            onClick={() => setIsNight(true)}
+          />
+          <div>
+            {isNight?(<div>
+                {possibleMoves?.map((move, index) => {
+              const movePosition = {
+                top: knightPosition.top + move.top,
+                left: knightPosition.left + move.left,
+              };
+              if (isPositionValid(movePosition)) {
+                return (
+                  <div
+                  className="absolute"
+                    key={index}
+                    style={{
+                        width : oneBlock,
+                        height : oneBlock,
+                        top: (movePosition.top - 1) * oneBlock,
+                        left: (movePosition.left - 1) * oneBlock,
+                        alignItems : "center",
+                        justifyContent : 'center',
+                        display : "flex"
+                    }}
+                
+                  >
+
+                    <div style={{width: oneBlock/2, height: oneBlock/2, borderRadius: oneBlock/4, backgroundColor: 'grey'}}></div>
+
+                  </div>
+                );
+              }
+              return null;
+            })}</div>) : <div></div>}
+            
+          </div>
+        </div>
+      );
+    }
+{/* {knights?.map((knight , index ) => {
                 return <div key={index}><Pieces knight={knight} oneBlock={oneBlock}/></div>
             })} */}
-            <img src={pieces[21]?.URl} 
-            style={{
-                width : oneBlock , 
-                height : oneBlock , 
-                position : "absolute" ,
-                marginTop : (pieces[1].position.top - 1 ) * oneBlock , 
-                marginLeft : (pieces[1].position.left - 1 ) * oneBlock
-            }}
-            onClick={() => Horse()}
-            />
-        </div>
-    )
-}

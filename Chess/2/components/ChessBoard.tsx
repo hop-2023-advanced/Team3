@@ -14,6 +14,7 @@ export default function ChessBoard() {
         width: oneBlock * boardWidth,
         height: oneBlock * boardHeight,
         backgroundColor: "brown",
+        position : "relative"
       }}
     >
       <ChessPieces oneBlock={oneBlock}/>
