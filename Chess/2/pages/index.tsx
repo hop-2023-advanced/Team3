@@ -8,3 +8,16 @@ export default function Home() {
     </main>
   );
 }
+// import React from 'react';
+// import Chessboard from '../components/ChessBoard';
+
+// const HomePage: React.FC = () => {
+//   return (
+//     <div>
+//       <h1>Welcome to My Chess App</h1>
+//       <Chessboard />
+//     </div>
+//   );
+// };
+
+// export default HomePage;
