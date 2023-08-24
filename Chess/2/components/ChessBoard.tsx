@@ -1,7 +1,9 @@
 import ChessPieces from "./chessPieces";
 
 export default function ChessBoard() {
+ 8-horse-funtion
   const oneBlock = 125;
+main
   const boardHeight = 8;
   const boardWidth = 8;
   const nums = [1, 2, 3, 4, 5, 6, 7, 8];

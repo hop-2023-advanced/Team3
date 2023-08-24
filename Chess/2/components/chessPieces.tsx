@@ -4,9 +4,15 @@ import Pieces from "./pieces"
 
 
 
+8-horse-funtion
 export default function ChessPieces ({}) {
     const oneBlock = 125
     const [pieces, setPieces] = useState([
+
+export default function ChessPieces ({}) {
+    const oneBlock = 80
+    const knights = [
+ main
         {
             id : "wp1",
             color : "white",
@@ -222,6 +228,7 @@ export default function ChessPieces ({}) {
     
       return (
         <div>
+ 8-horse-funtion
         {chessboard.map((el, index)=>(
             <div style={{width: "100%", height: oneBlock, display: "flex"}} key={index}>
                 {el.map((el)=>
@@ -236,3 +243,12 @@ export default function ChessPieces ({}) {
 {/* {knights?.map((knight , index ) => {
                 return <div key={index}><Pieces knight={knight} oneBlock={oneBlock}/></div>
             })} */}
+
+            {knights?.map((knight , index ) => {
+                return <div key={index}><Pieces knight={knight}/></div>
+            })}
+            {/* <img src={knights[3].knight4?.URl} style={{width : oneBlock , height : oneBlock , position : "absolute" , marginTop : Top , marginLeft : Left }}/> */}
+        </div>
+    )
+}
+ main
