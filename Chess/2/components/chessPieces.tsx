@@ -207,50 +207,7 @@ export default function ChessPieces ({ oneBlock}) {
         },
     ])
 
-    const knightIndex = 21;
-    const knightPosition = pieces[knightIndex].position;
-    const [isNight , setIsNight] = useState(false)
-    const possibleMoves = [
-        { top: -2, left: 1 },
-        { top: -2, left: -1 },
-        { top: 2, left: 1 },
-        { top: 2, left: -1 },
-        { top: 1, left: 2 },
-        { top: 1, left: -2 },
-        { top: -1, left: 2 },
-        { top: -1, left: -2 },
-      ];
-    
-      const highlightStyle = {
-        // boxShadow: "0 0 10px 30px grey",
 
-      };
-    
-      function isPositionValid(position) {
-        return (
-          position.top >= 1 &&
-          position.left >= 1 &&
-          position.top <= 8 &&
-          position.left <= 8
-        );
-      }
-    
-      function Horse() {
-        const newPieces = pieces.map((piece, index) => {
-          if (piece.id.charAt(1) === "n") {
-            const newPosition = {
-              top: piece.position.top - 2,
-              left: piece.position.left + 1,
-            };
-            if (isPositionValid(newPosition)) {
-              return { ...piece, position: newPosition };
-            }
-          }
-          return piece;
-        });
-    
-        setPieces(newPieces);
-      }
     
       return (
         <div>
@@ -263,41 +220,7 @@ export default function ChessPieces ({ oneBlock}) {
               marginTop: (pieces[21].position.top - 1) * oneBlock,
               marginLeft: (pieces[21].position.left - 1) * oneBlock,
             }}
-            onClick={() => setIsNight(true)}
           />
-          <div>
-            {isNight?(<div>
-                {possibleMoves?.map((move, index) => {
-              const movePosition = {
-                top: knightPosition.top + move.top,
-                left: knightPosition.left + move.left,
-              };
-              if (isPositionValid(movePosition)) {
-                return (
-                  <div
-                  className="absolute"
-                    key={index}
-                    style={{
-                        width : oneBlock,
-                        height : oneBlock,
-                        top: (movePosition.top - 1) * oneBlock,
-                        left: (movePosition.left - 1) * oneBlock,
-                        alignItems : "center",
-                        justifyContent : 'center',
-                        display : "flex"
-                    }}
-                
-                  >
-
-                    <div style={{width: oneBlock/2, height: oneBlock/2, borderRadius: oneBlock/4, backgroundColor: 'grey'}}></div>
-
-                  </div>
-                );
-              }
-              return null;
-            })}</div>) : <div></div>}
-            
-          </div>
         </div>
       );
     }
