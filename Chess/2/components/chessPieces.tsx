@@ -5,7 +5,8 @@ import Pieces from "./pieces"
 
 
 
-export default function ChessPieces ({ oneBlock, boardWidth, boardHeight }) {
+export default function ChessPieces ({}) {
+    const oneBlock = 80
     const knights = [
         {
             id : "wp",
@@ -199,7 +200,7 @@ export default function ChessPieces ({ oneBlock, boardWidth, boardHeight }) {
         return (
         <div>
             {knights?.map((knight , index ) => {
-                return <div key={index}><Pieces knight={knight} oneBlock={oneBlock}/></div>
+                return <div key={index}><Pieces knight={knight}/></div>
             })}
             {/* <img src={knights[3].knight4?.URl} style={{width : oneBlock , height : oneBlock , position : "absolute" , marginTop : Top , marginLeft : Left }}/> */}
         </div>
