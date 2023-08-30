@@ -17,6 +17,7 @@ export default function ChessBoard() {
         width: oneBlock * boardWidth,
         height: oneBlock * boardHeight,
         backgroundColor: "brown",
+        position: "absolute",
       }}
     >
       <div
@@ -25,6 +26,7 @@ export default function ChessBoard() {
           position: "absolute",
           flexDirection: "column-reverse",
           height: oneBlock * boardHeight,
+          width: 0,
         }}
       >
         {nums.map((el) => (
@@ -45,12 +47,12 @@ export default function ChessBoard() {
           display: "flex",
           position: "absolute",
           width: oneBlock * boardWidth,
-          height: oneBlock * boardHeight,
-          alignItems: "flex-end",
+          top: oneBlock * boardHeight,
         }}
       >
         {numsTwo.map((el) => (
           <div
+            key={el}
             style={{
               width: oneBlock,
               display: "flex",
@@ -68,7 +70,7 @@ export default function ChessBoard() {
           </div>
         ))}
       </div>
-      <ChessPieces/>
+      <ChessPieces />
     </div>
   );
 }
@@ -101,7 +103,7 @@ export default function ChessBoard() {
 //     }
 //   };
 //   return (
-//     <div style={{ 
+//     <div style={{
 //       display: 'flex',
 //       flexDirection: 'column'
 //       }}>
@@ -110,7 +112,7 @@ export default function ChessBoard() {
 //         style={{display : "flex"}}
 //         className="chessboard-row">
 //           {row.map((piece, columnIndex) => (
-//             <div key={columnIndex} 
+//             <div key={columnIndex}
 //             style={{
 //               width: 40,
 //               height: 40,
@@ -120,7 +122,7 @@ export default function ChessBoard() {
 //               backgroundColor: 'lightgray',
 //               border: '1px solid gray',
 //               fontSize: 20
-//             }} 
+//             }}
 //             onClick={() => handleSquareClick(0, 0, rowIndex, columnIndex)}
 //             className="chessboard-square">
 //               {piece}
@@ -131,6 +133,5 @@ export default function ChessBoard() {
 //     </div>
 //   );
 // };
-
 
 // export default Chessboard
