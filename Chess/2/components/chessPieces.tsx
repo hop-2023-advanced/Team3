@@ -1,18 +1,10 @@
-import { useState } from "react"
+
 import Pieces from "./pieces"
-// import Horse from "./PieceFuntions/horse"
 
 
-
-8-horse-funtion
 export default function ChessPieces ({}) {
     const oneBlock = 125
-    const [pieces, setPieces] = useState([
-
-export default function ChessPieces ({}) {
-    const oneBlock = 80
     const knights = [
- main
         {
             id : "wp1",
             color : "white",
@@ -212,7 +204,7 @@ export default function ChessPieces ({}) {
             position : {top : 1 ,left : 5},
             URl : "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png"
         },
-    ])
+    ]
     const
     chessboard = [
             ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
@@ -228,27 +220,14 @@ export default function ChessPieces ({}) {
     
       return (
         <div>
- 8-horse-funtion
         {chessboard.map((el, index)=>(
             <div style={{width: "100%", height: oneBlock, display: "flex"}} key={index}>
                 {el.map((el)=>
                     el === "." ? (<div style={{height: oneBlock, width: oneBlock}}/>) : 
-                    (<Pieces oneBlock={oneBlock} knight={el}/>)
+                    (<Pieces knight={el}/>)
                 )}
             </div>
         ))}
       </div>
       );
     }
-{/* {knights?.map((knight , index ) => {
-                return <div key={index}><Pieces knight={knight} oneBlock={oneBlock}/></div>
-            })} */}
-
-            {knights?.map((knight , index ) => {
-                return <div key={index}><Pieces knight={knight}/></div>
-            })}
-            {/* <img src={knights[3].knight4?.URl} style={{width : oneBlock , height : oneBlock , position : "absolute" , marginTop : Top , marginLeft : Left }}/> */}
-        </div>
-    )
-}
- main
