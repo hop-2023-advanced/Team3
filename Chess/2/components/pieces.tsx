@@ -14,111 +14,6 @@ export default function Pieces({
     <div style={{ width: oneBlock, height: oneBlock }}>
       <button
         onClick={() => {
-          if (knight === "p") {
-            if (position.y > 0) {
-              let newMove = [];
-
-              if (chessboard[position.y - 1][position.x] === ".") {
-                newMove.push({ x: position.x, y: position.y - 1 });
-              }
-              if (
-                position.y === 6 &&
-                chessboard[position.y - 2][position.x] === "." &&
-                chessboard[position.y - 1][position.x] === "."
-              ) {
-                newMove.push({ x: position.x, y: position.y - 2 });
-              }
-
-              if (
-                chessboard[position.y - 1][position.x - 1] !== "." &&
-                chessboard[position.y - 1][position.x - 1] &&
-                chessboard[position.y - 1][position.x - 1].charCodeAt(0) < 97
-              ) {
-                newMove.push({ x: position.x - 1, y: position.y - 1 });
-              }
-              if (
-                chessboard[position.y - 1][position.x + 1] !== "." &&
-                chessboard[position.y - 1][position.x + 1] &&
-                chessboard[position.y - 1][position.x + 1].charCodeAt(0) < 97
-              ) {
-                newMove.push({ x: position.x + 1, y: position.y - 1 });
-              }
-
-              setMoves(newMove);
-            }
-          }
-
-          if (knight === "k") {
-            let newMove = [];
-
-            if (
-              chessboard[position.y - 1] &&
-              chessboard[position.y - 1][position.x].charCodeAt(0) < 97
-            ) {
-              newMove.push({ x: position.x, y: position.y - 1 });
-            }
-            if (
-              chessboard[position.y] &&
-              chessboard[position.y][position.x - 1] &&
-              chessboard[position.y][position.x - 1].charCodeAt(0) < 97
-            ) {
-              newMove.push({ x: position.x - 1, y: position.y });
-            }
-            if (
-              chessboard[position.y - 1] &&
-              chessboard[position.y - 1][position.x - 1] &&
-              chessboard[position.y - 1][position.x - 1].charCodeAt(0) < 97
-            ) {
-              newMove.push({ x: position.x - 1, y: position.y - 1 });
-            }
-            if (
-              chessboard[position.y] &&
-              chessboard[position.y][position.x + 1] &&
-              chessboard[position.y][position.x + 1].charCodeAt(0) < 97
-            ) {
-              newMove.push({ x: position.x + 1, y: position.y });
-            }
-            if (
-              chessboard[position.y - 1] &&
-              chessboard[position.y - 1][position.x + 1] &&
-              chessboard[position.y - 1][position.x + 1].charCodeAt(0) < 97
-            ) {
-              newMove.push({ x: position.x + 1, y: position.y - 1 });
-            }
-            if (
-              chessboard[position.y + 1] &&
-              chessboard[position.y + 1][position.x - 1] &&
-              chessboard[position.y + 1][position.x - 1].charCodeAt(0) < 97
-            ) {
-              newMove.push({ x: position.x - 1, y: position.y + 1 });
-            }
-            if (
-              chessboard[position.y + 1] &&
-              chessboard[position.y + 1][position.x + 1] &&
-              chessboard[position.y + 1][position.x + 1].charCodeAt(0) < 97
-            ) {
-              newMove.push({ x: position.x + 1, y: position.y + 1 });
-            }
-            if (
-              chessboard[position.y + 1] &&
-              chessboard[position.y + 1][position.x].charCodeAt(0) < 97
-            ) {
-              newMove.push({ x: position.x, y: position.y + 1 });
-            }
-
-            setMoves(newMove);
-          }
-
-          if (knight === "P") {
-            if (position.y === 1) {
-              setMoves([
-                { x: position.x, y: position.y + 1 },
-                { x: position.x, y: position.y + 2 },
-              ]);
-            } else {
-              setMoves([{ x: position.x, y: position.y + 1 }]);
-            }
-          }
         }}
       >
         <img
@@ -165,7 +60,7 @@ export default function Pieces({
         >
           <button
             style={{
-              backgroundColor: "black",
+
               opacity: 0.5,
               height: oneBlock * 0.8,
               width: oneBlock * 0.8,

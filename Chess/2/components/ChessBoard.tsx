@@ -45,18 +45,20 @@ export default function ChessBoard() {
       <div
         style={{
           display: "flex",
-          position: "absolute",
           width: oneBlock * boardWidth,
           top: oneBlock * boardHeight,
         }}
       >
-        {numsTwo.map((el) => (
+        {numsTwo.map((el, index) => (
           <div
             key={el}
             style={{
+              left: oneBlock * index,
+              position: "absolute",
               width: oneBlock,
               display: "flex",
               justifyContent: "flex-end",
+              bottom: 0,
             }}
           >
             <div
@@ -74,64 +76,3 @@ export default function ChessBoard() {
     </div>
   );
 }
-// }import React from 'react';
-// import React, { useState } from "react";
-
-// const Chessboard: React.FC = () => {
-//   const initialChessboard: string[][] = [
-//     ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
-//     ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
-//     ['.', '.', '.', '.', '.', '.', '.', '.'],
-//     ['.', '.', '.', '.', '.', '.', '.', '.'],
-//     ['.', '.', '.', '.', '.', '.', '.', '.'],
-//     ['.', '.', '.', '.', '.', '.', '.', '.'],
-//     ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
-//     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
-//   ];
-
-//   const [chessboard, setChessboard] = useState(initialChessboard);
-//   const [selectedPiece, setSelectedPiece] = useState<string | null>(null);
-
-//   const handleSquareClick = (row: number, col: number) => {
-//     if (!selectedPiece) {
-//       setSelectedPiece(chessboard[row][col]);
-//     } else {
-//       const updatedChessboard = [...chessboard];
-//       updatedChessboard[row][col] = selectedPiece;
-//       setSelectedPiece(null);
-//       setChessboard(updatedChessboard);
-//     }
-//   };
-//   return (
-//     <div style={{
-//       display: 'flex',
-//       flexDirection: 'column'
-//       }}>
-//       {chessboard.map((row, rowIndex) => (
-//         <div key={rowIndex}
-//         style={{display : "flex"}}
-//         className="chessboard-row">
-//           {row.map((piece, columnIndex) => (
-//             <div key={columnIndex}
-//             style={{
-//               width: 40,
-//               height: 40,
-//               display: 'flex',
-//               alignItems: 'center',
-//               justifyContent: 'center',
-//               backgroundColor: 'lightgray',
-//               border: '1px solid gray',
-//               fontSize: 20
-//             }}
-//             onClick={() => handleSquareClick(0, 0, rowIndex, columnIndex)}
-//             className="chessboard-square">
-//               {piece}
-//             </div>
-//           ))}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Chessboard
