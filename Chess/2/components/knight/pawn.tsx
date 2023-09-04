@@ -49,7 +49,6 @@ export const Pawn = ({
             newMove.push({ x: position.x, y: position.y + 2 });
           }
         }
-
         if (
           chessboard[position.y + 1][position.x - 1] &&
           chessboard[position.y + 1][position.x - 1].charCodeAt(0) >= 97
@@ -62,7 +61,6 @@ export const Pawn = ({
         ) {
           newMove.push({ x: position.x + 1, y: position.y + 1 });
         }
-
         setMoves(newMove);
       }
     }

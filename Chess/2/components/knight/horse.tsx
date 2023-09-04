@@ -11,7 +11,7 @@ export const Horse = ({
       if (
         chessboard[position.y - 2] &&
         chessboard[position.y - 2][position.x + 1] &&
-        chessboard[position.y - 2][position.x + 1].charCodeAt(0) < 97
+        chessboard[position.y - 2][position.x + 1].charCodeAt(0) < 97 
       ) {
         newMove.push({ x: position.x + 1, y: position.y - 2 });
       }
@@ -64,11 +64,11 @@ export const Horse = ({
       ) {
         newMove.push({ x: position.x - 2, y: position.y + 1 });
       }
-
       setMoves(newMove);
     }
   } else {
-    if (knight === "N") {
+    
+      if (knight === "N") {
       if (
         chessboard[position.y - 2] &&
         chessboard[position.y - 2][position.x + 1] &&
@@ -133,7 +133,7 @@ export const Horse = ({
       ) {
         newMove.push({ x: position.x - 2, y: position.y + 1 });
       }
-
+    
       setMoves(newMove);
     }
   }

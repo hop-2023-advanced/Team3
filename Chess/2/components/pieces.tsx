@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { Pawn } from "./knight/pawn";
+import { King } from "./knight/king";
+import { Horse } from "./knight/horse";
+import { Bishop } from "./knight/bishop";
 
 export default function Pieces({
   knight,
@@ -7,15 +11,30 @@ export default function Pieces({
   chessboard,
 }) {
   const oneBlock = 125;
-
   const [moves, setMoves] = useState([]);
+  const [turn , setTurn] = useState("white")
+
+  const toggleTurn = () => {
+    setTurn(turn === "white" ? "black" : "white");
+  };
 
   return (
     <div style={{ width: oneBlock, height: oneBlock }}>
       <button
         onClick={() => {
-        }}
-      >
+          toggleTurn
+          let newMove = [];
+          const props = { chessboard, position, knight, setMoves, newMove , turn };
+          if(turn === "white"){
+            setTurn("black")
+          } else {
+            setTurn("white")
+          }
+          Pawn(props);
+          King(props);
+          Horse(props);
+          Bishop(props);
+        }}>
         <img
           src={
             knight === "p"
@@ -40,7 +59,9 @@ export default function Pieces({
               ? "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bq.png"
               : knight === "k"
               ? "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png"
-              : "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png"
+              : knight === "K" 
+              ? "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png"
+              : "none"
           }
         />
       </button>
@@ -60,7 +81,7 @@ export default function Pieces({
         >
           <button
             style={{
-
+              backgroundColor: "black",
               opacity: 0.5,
               height: oneBlock * 0.8,
               width: oneBlock * 0.8,
@@ -69,10 +90,8 @@ export default function Pieces({
             }}
             onClick={() => {
               const newBoard = [...chessboard];
-
               newBoard[position.y][position.x] = ".";
               newBoard[index.y][index.x] = knight;
-
               setChessboard(newBoard);
             }}
           />
