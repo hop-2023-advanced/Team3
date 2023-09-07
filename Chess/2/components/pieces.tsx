@@ -3,38 +3,44 @@ import { Pawn } from "./knight/pawn";
 import { King } from "./knight/king";
 import { Horse } from "./knight/horse";
 import { Bishop } from "./knight/bishop";
+import { Rook } from "./knight/rook";
+import { Queen } from "./knight/queen";
 
 export default function Pieces({
   knight,
   position,
   setChessboard,
   chessboard,
+  turn,
+  setTurn,
 }) {
   const oneBlock = 125;
-  const [moves, setMoves] = useState([]);
-  const [turn , setTurn] = useState("white")
 
-  const toggleTurn = () => {
-    setTurn(turn === "white" ? "black" : "white");
-  };
+  const [moves, setMoves] = useState([]);
 
   return (
     <div style={{ width: oneBlock, height: oneBlock }}>
       <button
         onClick={() => {
-          toggleTurn
           let newMove = [];
-          const props = { chessboard, position, knight, setMoves, newMove , turn };
-          if(turn === "white"){
-            setTurn("black")
-          } else {
-            setTurn("white")
-          }
+
+          const props = {
+            chessboard,
+            position,
+            knight,
+            setMoves,
+            newMove,
+            turn,
+          };
+
           Pawn(props);
           King(props);
           Horse(props);
           Bishop(props);
-        }}>
+          Rook(props);
+          Queen(props);
+        }}
+      >
         <img
           src={
             knight === "p"
@@ -59,9 +65,7 @@ export default function Pieces({
               ? "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bq.png"
               : knight === "k"
               ? "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png"
-              : knight === "K" 
-              ? "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png"
-              : "none"
+              : "https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png"
           }
         />
       </button>
@@ -81,7 +85,8 @@ export default function Pieces({
         >
           <button
             style={{
-              backgroundColor: "black",
+              backgroundColor:
+                chessboard[index.y][index.x] === "." ? "black" : "yellow",
               opacity: 0.5,
               height: oneBlock * 0.8,
               width: oneBlock * 0.8,
@@ -90,9 +95,16 @@ export default function Pieces({
             }}
             onClick={() => {
               const newBoard = [...chessboard];
+
               newBoard[position.y][position.x] = ".";
               newBoard[index.y][index.x] = knight;
+
               setChessboard(newBoard);
+              if (turn === "white") {
+                setTurn("black");
+              } else {
+                setTurn("white");
+              }
             }}
           />
         </div>

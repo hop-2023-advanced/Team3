@@ -1,9 +1,8 @@
 import { useState } from "react";
 import Pieces from "./pieces";
 
-export default function ChessPieces({}) {
+export default function ChessPieces({ turn, setTurn }) {
   const oneBlock = 125;
-
 
   const [chessboard, setChessboard] = useState([
     ["R", "N", "B", "Q", "K", "B", "N", "R"],
@@ -30,6 +29,8 @@ export default function ChessPieces({}) {
               <Pieces
                 knight={el}
                 key={hindex}
+                turn={turn}
+                setTurn={setTurn}
                 position={{ x: hindex, y: vindex }}
                 setChessboard={setChessboard}
                 chessboard={chessboard}
